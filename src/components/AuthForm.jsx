@@ -3,45 +3,47 @@ import { RiCheckboxCircleFill } from "react-icons/ri";
 
 const AuthForm = () => {
   return (
-    <div className="mx-20 mt-6  flex">
-      <div className="max-w-sm bg-sky-700">
-        <h2>Register for a better opporturnity!</h2>
-        <div className="flex">
-          <RiCheckboxCircleFill />
+    <div className="mx-20 mt-6  flex justify-center">
+      <div className="m-4 max-w-sm bg-sky-700">
+        <div className="m-8 text-white">
+          <h2 className="text-xl">Register for a better opporturnity!</h2>
+          <div className="flex m-2 pt-2">
+            <RiCheckboxCircleFill />
 
-          <h1>#1 Job Site of Nepal</h1>
+            <h1 className="text-lg">#1 Job Site of Nepal</h1>
+          </div>
+          <p className="text-sm">
+            Google Analytics, Social Medias, Jobseeker and Employer have always
+            put us on top!
+          </p>
+          <div className="flex">
+            <RiCheckboxCircleFill />
+            <h1 className="text-lg">Most Trusted Job Portal in Nepal</h1>
+          </div>
+          <p className="text-sm">
+            Over 400 million+ page views since the inception year 2009 over 6.5
+            million+ monthly visitors and it's growing everyday.
+          </p>
+          <div className="flex">
+            <RiCheckboxCircleFill />
+            <h1 className="text-lg">It's FREE and It will Always Be</h1>
+          </div>
+          <p className="text-sm">
+            At merojob we don't put a price on opportunity, what you see is what
+            you get! An average of 25,000 job opportunities to choose from. No
+            registration fees. No hidden costs.
+          </p>
+          <div className="flex">
+            <RiCheckboxCircleFill />
+            <h1 className="text-lg">We Provide Career Opportunities</h1>
+          </div>
+          <p className="text-sm">
+            We are proud to have partnered with more than 40,000+ businesses and
+            launched over 2,00,000+ careers and counting.
+          </p>
         </div>
-        <p>
-          Google Analytics, Social Medias, Jobseeker and Employer have always
-          put us on top!
-        </p>
-        <div className="flex">
-          <RiCheckboxCircleFill />
-          <h1>Most Trusted Job Portal in Nepal</h1>
-        </div>
-        <p>
-          Over 400 million+ page views since the inception year 2009 over 6.5
-          million+ monthly visitors and it's growing everyday.
-        </p>
-        <div className="flex">
-          <RiCheckboxCircleFill />
-          <h1>It's FREE and It will Always Be</h1>
-        </div>
-        <p>
-          At merojob we don't put a price on opportunity, what you see is what
-          you get! An average of 25,000 job opportunities to choose from. No
-          registration fees. No hidden costs.
-        </p>
-        <div className="flex">
-          <RiCheckboxCircleFill />
-          <h1>We Provide Career Opportunities</h1>
-        </div>
-        <p>
-          We are proud to have partnered with more than 40,000+ businesses and
-          launched over 2,00,000+ careers and counting.
-        </p>
       </div>
-      <form className="max-w-sm flex flex-col">
+      <form className="m-4 max-w-sm flex flex-col border-2">
         {/* <label htmlFor="Full Name">FullName</label> */}
         <input
           className="border-2 h-10 m-4"
@@ -95,7 +97,9 @@ const AuthForm = () => {
           the terms and privacy of merojob
         </p>
 
-        <button>Create Jobseeker Account</button>
+        <button className="m-2 bg-sky-400 p-2 w-5/6 rounded-lg hover:bg-sky-200 text-white font-extralight">
+          Create Jobseeker Account
+        </button>
       </form>
     </div>
   );
