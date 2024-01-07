@@ -34,7 +34,7 @@ const LoginForm = () => {
 
             <p>Forgot Password?</p>
           </div>
-          <Link to={"/profile/:profileId"}>
+          <Link to={"/profile"}>
             <button className="m-10 bg-sky-400 p-4 w-5/6 rounded-lg hover:bg-sky-200 text-white font-extralight">
               Log in
             </button>

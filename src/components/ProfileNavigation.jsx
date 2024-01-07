@@ -9,35 +9,35 @@ import { IoIosPerson } from "react-icons/io";
 const ProfileNavigation = () => {
   return (
     <div className="m-8 p-2 flex justify-end">
-      <div className="m-2 flex flex-col items-center ">
+      <div className="m-2 flex flex-col items-center">
         <div className="p-2 scale-150">
           <CiHome />
         </div>
         <p className="">OverView</p>
       </div>
-      <div className="m-2">
-        <div className="scale-150">
+      <div className="m-2 flex flex-col items-center">
+        <div className="p-2 scale-150">
           <CgProfile />
         </div>
         <p>My Profile</p>
       </div>
-      <div className="m-2">
-        <div className="scale-150">
+      <div className="m-2 flex flex-col items-center">
+        <div className="p-2 scale-150">
           <TbHeartRateMonitor />
         </div>
         <p>My Status</p>
       </div>
-      <div className="m-2">
-        <div className="scale-150">
+      <div className="m-2 flex flex-col items-center">
+        <div className="p-2 scale-150">
           <MdOutlineSettingsInputComponent />
         </div>
         <p>Setting</p>
       </div>
-      <div className="m-3 scale-150">
+      <div className="m-4 p-2 scale-[2]">
         <CiHeart />
       </div>
 
-      <div className="m-3 scale-150">
+      <div className="m-4 p-2 scale-[2]">
         <IoIosPerson />
       </div>
     </div>
