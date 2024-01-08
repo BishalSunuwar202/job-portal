@@ -14,7 +14,8 @@ const HomePage = () => {
           />
 
           {/* <div className="relative m-6"> */}
-          <div className="bg-slate-600 w-5/12 mx-40">
+          <div className="bg-slate-600 lg:w-5/12
+           mx-40">
             <div className=" flex">
               <input
                 type="search"

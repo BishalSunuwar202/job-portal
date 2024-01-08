@@ -1,12 +1,13 @@
 import React from "react";
 import JobsItem from "./JobsItem";
+import { Link } from "react-router-dom";
 
 const Dummy_Jobs = [
   {
     id: 1,
     imgUrl:
       "https://merojob.com/media/cache/66/01/6601dad42af8eba72a44ccc7d012c310.jpg",
-    CompanyName: "Zen Nepal",
+    CompanyName: "Zen-Nepal",
   },
   {
     id: 2,
@@ -47,20 +48,31 @@ const Dummy_Jobs = [
 ];
 const Jobs = (props) => {
   return (
-    <section>
-      <h2>Top Jobs</h2>
-      <ul>
-        {Dummy_Jobs.map((jobs) => (
-          <JobsItem
-            key={jobs.id}
+    <div>
+      <section className="border-lime-950 border-2">
+        <h2 className="m-4 text-center ">Top Jobs</h2>
+        <ul className="grid grid-cols-3 ">
+          {Dummy_Jobs.map((jobs) => (
+            <Link to={`/employer/${jobs.id}`}>
+              <JobsItem
+                key={jobs.id}
+                id={jobs.id}
+                imgUrl={jobs.imgUrl}
+                name={jobs.CompanyName}
+              />
+            </Link>
+          ))}
+          
+        </ul>
+        {/* {Dummy_Jobs.map((jobs) => (
+          <CompanyDetailPage
             id={jobs.id}
             imgUrl={jobs.imgUrl}
             name={jobs.CompanyName}
           />
-        ))}
-        ;
-      </ul>
-    </section>
+        ))} */}
+      </section>
+    </div>
   );
 };
 

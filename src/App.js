@@ -7,6 +7,7 @@ import AuthenticationPage from "./pages/Authentication";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProfileRootLayout from "./pages/ProfileRootLayout";
+import CompanyDetailPage from "./pages/CompanyDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "auth/login",
         element: <LoginPage />,
+      },
+      {
+        path: "employer/:id",
+        element: <CompanyDetailPage />,
       },
       {
         path: "profile",

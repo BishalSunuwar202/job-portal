@@ -4,7 +4,8 @@ import { CgProfile } from "react-icons/cg";
 import { TbHeartRateMonitor } from "react-icons/tb";
 import { MdOutlineSettingsInputComponent } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
-import { IoIosPerson } from "react-icons/io";
+import DropDownMenu from "./DropDownMenu";
+
 
 const ProfileNavigation = () => {
   return (
@@ -33,14 +34,19 @@ const ProfileNavigation = () => {
         </div>
         <p>Setting</p>
       </div>
-      <div className="m-4 p-2 scale-[2]">
+      <div className="m-4 p-2 scale-[2] h-10">
         <CiHeart />
       </div>
-
-      <div className="m-4 p-2 scale-[2]">
-        <IoIosPerson />
+      <div className="border-2">
+        <DropDownMenu />
       </div>
+
+      
+
+      
     </div>
+    
+    
   );
 };
 
