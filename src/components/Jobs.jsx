@@ -51,18 +51,15 @@ const Jobs = (props) => {
     <div>
       <section className="border-lime-950 border-2">
         <h2 className="m-4 text-center ">Top Jobs</h2>
-        <ul className="grid grid-cols-3 ">
+        <ul className="grid grid-cols-3">
           {Dummy_Jobs.map((jobs) => (
-            <Link to={`/employer/${jobs.id}`}>
-              <JobsItem
-                key={jobs.id}
-                id={jobs.id}
-                imgUrl={jobs.imgUrl}
-                name={jobs.CompanyName}
-              />
-            </Link>
+            <JobsItem
+              key={jobs.id}
+              id={jobs.id}
+              imgUrl={jobs.imgUrl}
+              name={jobs.CompanyName}
+            />
           ))}
-          
         </ul>
         {/* {Dummy_Jobs.map((jobs) => (
           <CompanyDetailPage

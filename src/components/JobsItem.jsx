@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const JobsItem = ({ imgUrl, name }) => {
+const JobsItem = ({ id, imgUrl, name }) => {
   return (
     <div className="flex flex-col items-center">
-      <div className="border-2">
-        <img src={imgUrl} alt={name} />
-        <h3>{name}</h3>
-      </div>
+      <Link to={`/employer/${id}`}>
+        <div className="border-2">
+          <img src={imgUrl} alt={name} />
+          <h3>{name}</h3>
+        </div>
+      </Link>
       <div className="border-2 h-auto w-4/12 m-4">
         <h1>Job Description</h1>
         <div>

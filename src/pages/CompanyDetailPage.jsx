@@ -1,6 +1,7 @@
 import React from "react";
 import JobsItem from "../components/JobsItem";
 import { useParams } from "react-router-dom";
+import ProfileNavigation from "../components/ProfileNavigation";
 
 const Dummy_Jobs = [
   {
@@ -51,7 +52,12 @@ const CompanyDetailPage = () => {
   const { id } = useParams();
   console.log(id);
   const job = Dummy_Jobs.find((j) => j.id === +id);
-  return <JobsItem imgUrl={job.imgUrl} name={job.CompanyName} />;
+  return (
+    <>
+      <ProfileNavigation />
+      <JobsItem imgUrl={job.imgUrl} name={job.CompanyName} />;
+    </>
+  );
 };
 
 export default CompanyDetailPage;

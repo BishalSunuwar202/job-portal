@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoIosPerson } from "react-icons/io";
 import { MdOutlineArrowDropDown } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const DropDownMenu = () => {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,7 @@ const DropDownMenu = () => {
                 Change Password
               </h3>
               <h3 className="m-2 hover:bg-slate-200 active:ring-orange-100 ">
-                Saved Jobs
+                <Link to={"favourite"}>Saved Jobs</Link>
               </h3>
               <h3 className="m-2 hover:bg-slate-200 active:ring-orange-100 ">
                 Purchase History
