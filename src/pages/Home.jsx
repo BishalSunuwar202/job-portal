@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Jobs from "../components/Jobs";
+import Jobs from "../components/Jobs/Jobs";
 import { FaSearch } from "react-icons/fa";
 
 const HomePage = () => {
@@ -14,8 +14,10 @@ const HomePage = () => {
           />
 
           {/* <div className="relative m-6"> */}
-          <div className="bg-slate-600 lg:w-5/12
-           mx-40">
+          <div
+            className="bg-slate-600 lg:w-5/12
+           mx-40"
+          >
             <div className=" flex">
               <input
                 type="search"
