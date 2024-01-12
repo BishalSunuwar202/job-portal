@@ -20,6 +20,15 @@ const jobSlice = createSlice({
         });
       }
     },
+    removeJobFromCart(state, action) {
+      const id = action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      state.changed = true;
+
+      if (existingItem) {
+        state.items = state.items.filter((item) => item.id !== id);
+      }
+    },
   },
 });
 

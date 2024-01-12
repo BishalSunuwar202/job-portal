@@ -5,7 +5,7 @@ import { TbHeartRateMonitor } from "react-icons/tb";
 import { MdOutlineSettingsInputComponent } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
 import DropDownMenu from "./DropDownMenu";
-
+import { Link } from "react-router-dom";
 
 const ProfileNavigation = () => {
   return (
@@ -40,13 +40,7 @@ const ProfileNavigation = () => {
       <div className="border-2">
         <DropDownMenu />
       </div>
-
-      
-
-      
     </div>
-    
-    
   );
 };
 
