@@ -1,6 +1,5 @@
 import React from "react";
 import JobsItem from "./JobsItem";
-import { Link } from "react-router-dom";
 
 const Dummy_Jobs = [
   {
@@ -66,7 +65,7 @@ const Jobs = (props) => {
               imgUrl={jobs.imgUrl}
               name={jobs.CompanyName}
               position={jobs.JobPositon}
-              />
+            />
           ))}
         </ul>
         {/* {Dummy_Jobs.map((jobs) => (

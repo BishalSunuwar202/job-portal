@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ProfileNavigation from "../components/ProfileNavigation";
+import ProfileNavigation from "../components/profile/ProfileNavigation";
 import JobsDetail from "../components/Jobs/JobsDetail";
 
 const Dummy_Jobs = [

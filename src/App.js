@@ -9,6 +9,7 @@ import ProfilePage from "./pages/ProfilePage";
 import ProfileRootLayout from "./pages/ProfileRootLayout";
 import CompanyDetailPage from "./pages/CompanyDetailPage";
 import SavedJobsPage from "./pages/SavedJobsPage";
+import ProfileForm from "./components/profile/ProfileForm";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "employer/:id/favourite",
-        element: <SavedJobsPage />
+        element: <SavedJobsPage />,
       },
       {
         path: "profile",
@@ -44,7 +45,10 @@ const router = createBrowserRouter([
             index: true,
             element: <ProfilePage />,
           },
-          
+          {
+            path: "profileDetails",
+            element: <ProfileForm />,
+          },
         ],
       },
     ],
