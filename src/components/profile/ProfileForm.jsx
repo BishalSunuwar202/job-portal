@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdEditDocument } from "react-icons/md";
+import ProfileFormCase from "./ProfileFormCase";
+import ProfileFormDetail from "./ProfileFormDetail";
 
 const ProfileForm = () => {
+
+  const [open, setOpen] =useState(false)
+
+  const handleOpenChange = (value) => {
+    setOpen(value)
+  }
+ 
   return (
     <div className="flex flex-col ml-52 mr-52 font-medium text-slate-700">
       <div className="flex border relative p-6">
@@ -31,72 +40,14 @@ const ProfileForm = () => {
             <li className="border w-full text-center p-4">Other Information</li>
           </ul>
         </div>
-        <div className="border w-screen ">
-          <div className="flex justify-between border">
-            <p className="font-bold m-4 p-2"> Job Preference</p>
-            <button className="m-4 p-2 border border-solid border-cyan-400 font-medium text-cyan-400 hover:bg-cyan-600">
-              Edit Career & Objective
-            </button>
-          </div>
-          <div>
-            <h1 className="font-bold ml-4 mt-4 pl-2 pt-2 pr-2">
-              Career Objective Summary
-            </h1>
-            <p className="text-slate-400 ml-4 pl-2">
-              to pursue the challenging career
-            </p>
-          </div>
-          <div className="m-4 p-4 bg-slate-200 flex justify-between">
-            <h1 className="">Job Categories</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-50 flex justify-between">
-            <h1 className="">Preferred Industries</h1>
-            <span>:</span>
-            <h1>Software Companies</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-200 flex justify-between">
-            <h1 className="">Preferred Job Title</h1>
-            <span>:</span>
-            <h1>Web Developer</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-50 flex justify-between">
-            <h1 className="">Looking For</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-200 flex justify-between">
-            <h1 className="">Available for</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-50 flex justify-between">
-            <h1 className="">Specialization</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-200 flex justify-between">
-            <h1 className="">Skills</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-50 flex justify-between">
-            <h1 className="">Expected Salary</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-200 flex justify-between">
-            <h1 className="">Current Salary</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-          <div className="m-4 p-4 bg-slate-50 flex justify-between">
-            <h1 className="">Job Preference Location</h1>
-            <span>:</span>
-            <h1>Construction</h1>
-          </div>
-        </div>
+        {
+          open ?  
+            <ProfileFormCase />
+           : <ProfileFormDetail setOpen={handleOpenChange} />
+            
+          
+        }
+        
       </div>
     </div>
   );
