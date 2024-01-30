@@ -26,6 +26,8 @@ const ProfileFormDetail = ({ setOpen }) => {
       <div className="m-4 p-4 bg-slate-200 flex justify-between">
         <h1 className="">Job Categories</h1>
         <span>:</span>
+        {/* {<h1>{profileDetials.JobCategories}</h1>} */}
+        
         <h1>Construction</h1>
       </div>
       <div className="m-4 p-4 bg-slate-50 flex justify-between">

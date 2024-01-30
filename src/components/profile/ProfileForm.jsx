@@ -4,14 +4,12 @@ import ProfileFormCase from "./ProfileFormCase";
 import ProfileFormDetail from "./ProfileFormDetail";
 
 const ProfileForm = () => {
-  
-
-  const [open, setOpen] =useState(false)
+  const [open, setOpen] = useState(false);
 
   const handleOpenChange = (value) => {
-    setOpen(value)
-  }
- 
+    setOpen(value);
+  };
+
   return (
     <div className="flex flex-col ml-52 mr-52 font-medium text-slate-700">
       <div className="flex border relative p-6">
@@ -41,14 +39,13 @@ const ProfileForm = () => {
             <li className="border w-full text-center p-4">Other Information</li>
           </ul>
         </div>
-        {
-          open ?  
-            <ProfileFormCase />
-           : <ProfileFormDetail setOpen={handleOpenChange} />
-            
-          
-        }
-        
+        {open ? (
+          <ProfileFormCase />
+        ) : (
+          <ProfileFormDetail
+            setOpen={handleOpenChange}
+          />
+        )}
       </div>
     </div>
   );

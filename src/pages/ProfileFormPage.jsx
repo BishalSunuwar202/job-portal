@@ -1,12 +1,35 @@
 import React from "react";
 import ProfileForm from "../components/profile/ProfileForm";
-import { json,  } from "react-router-dom";
+import { json, useLoaderData } from "react-router-dom";
 
 const ProfileFormPage = () => {
-  return <ProfileForm />;
+  const profileDetails = useLoaderData();
+  return (
+    <>
+      <h1>dsdds</h1>
+      <ProfileForm />;
+    </>
+  );
 };
 
 export default ProfileFormPage;
+
+export async function loader({ request, params }) {
+  try {
+    const response = await fetch(
+      "https://mero-job-bcb98-default-rtdb.firebaseio.com/ProfileData.json"
+    );
+    console.log(response)
+    if (!response.ok) {
+      throw json({ message: "Could not fetch data", status: 500 });
+    } else {
+      const resData = await response.json();
+      return resData.ProfileData;
+    }
+  } catch (error) {
+    console.error("There was an error", error);
+  }
+}
 
 export async function action({ request, params }) {
   const data = await request.formData();
@@ -36,11 +59,12 @@ export async function action({ request, params }) {
         body: JSON.stringify(profileData),
       }
     );
+    console.log(response);
 
     if (!response.ok) {
       throw json({ message: "could not save profile" }, { status: 500 });
     }
-    window.location.reload();
+    // window.location.reload();
   } catch (err) {
     console.error("error:", err);
   }

@@ -9,7 +9,10 @@ import ProfilePage from "./pages/ProfilePage";
 import ProfileRootLayout from "./pages/ProfileRootLayout";
 import CompanyDetailPage from "./pages/CompanyDetailPage";
 import SavedJobsPage from "./pages/SavedJobsPage";
-import ProfileFormPage, {action as newProfileAction } from "./pages/ProfileFormPage";
+import ProfileFormPage, {
+  action as newProfileAction,
+  loader as profileDetailLoader,
+} from "./pages/ProfileFormPage";
 
 const router = createBrowserRouter([
   {
