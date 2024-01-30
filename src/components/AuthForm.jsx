@@ -89,6 +89,8 @@ const AuthForm = () => {
           placeholder="Password"
           id="password"
           name="password"
+          autoComplete="current-password"
+
           required
         />
 

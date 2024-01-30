@@ -4,6 +4,7 @@ import ProfileFormCase from "./ProfileFormCase";
 import ProfileFormDetail from "./ProfileFormDetail";
 
 const ProfileForm = () => {
+  
 
   const [open, setOpen] =useState(false)
 

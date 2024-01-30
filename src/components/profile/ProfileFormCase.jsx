@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Form } from "react-router-dom";
 
 const ProfileFormCase = () => {
   return (
     <div className="border border-gray-800 m-4 w-screen">
-      <form className="flex flex-col " action="">
+      <Form method="POST" className="flex flex-col " action="">
         <div className="flex gap-2 items-center">
           <label className="m-4 p-2 flex-1 " htmlFor="Job Categories">
             Job Categories
@@ -139,15 +139,48 @@ const ProfileFormCase = () => {
           <button className="border m-4 p-2 w-24 bg-cyan-400 hover:bg-cyan-900">
             Save
           </button>
-          <Link to="">
-            <button className="border m-4 p-2 w-24 bg-cyan-400 hover:bg-cyan-900">
-              cancel
-            </button>
-          </Link>
+          <button className="border m-4 p-2 w-24 bg-cyan-400 hover:bg-cyan-900">
+            cancel
+          </button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 };
 
 export default ProfileFormCase;
+
+// export async function action({ request, params }) {
+//   const data = await request.formData();
+
+//   const profileData = {
+//     JobCategories: data.get("Job Categories"),
+//     PreferredIndustries: data.get("Preferred Industries"),
+//     PreferredJobTitle: data.get("Preferred Job Title"),
+//     LookingFor: data.get("Looking For"),
+//     AvailableFor: data.get("Available for"),
+//     Specializations: data.get("Specializations"),
+//     Skills: data.get("Skills"),
+//     ExpectedSalary: data.get("Expected Salary"),
+//     CurrentSalary: data.get("Current Salary"),
+//     CarrerObjectuveSummary: data.get("Carrer Objectuve Summary"),
+//     JobPreferenceLocation: data.get("Job Preference Location"),
+//   };
+//   console.log(profileData);
+
+//   const response = await fetch(
+//     "https://mero-job-bcb98-default-rtdb.firebaseio.com/ProfileData.json",
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(profileData),
+//     }
+//   );
+//   console.log(response)
+
+//   if (!response.ok) {
+//     throw json({ message: "could not save profile" }, { status: 500 });
+//   }
+// }

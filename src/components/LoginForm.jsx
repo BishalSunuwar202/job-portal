@@ -24,6 +24,7 @@ const LoginForm = () => {
             placeholder="Password"
             id="password"
             name="password"
+            autoComplete="current-password"
             required
           />
           <div className="flex justify-around">
