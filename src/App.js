@@ -51,6 +51,7 @@ const router = createBrowserRouter([
           {
             path: "profileDetails",
             element: <ProfileFormPage />,
+            loader: profileDetailLoader,
             action: newProfileAction,
           },
         ],

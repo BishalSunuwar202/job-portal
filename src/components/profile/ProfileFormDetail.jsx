@@ -1,6 +1,8 @@
 import React from "react";
 
-const ProfileFormDetail = ({ setOpen }) => {
+const ProfileFormDetail = ({ setOpen, profileData }) => {
+  let profileDetail = Object.values(profileData)
+  console.log(profileDetail[0].Skills)
   const changeComp = () => {
     setOpen(true);
   };
@@ -26,14 +28,14 @@ const ProfileFormDetail = ({ setOpen }) => {
       <div className="m-4 p-4 bg-slate-200 flex justify-between">
         <h1 className="">Job Categories</h1>
         <span>:</span>
-        {/* {<h1>{profileDetials.JobCategories}</h1>} */}
-        
-        <h1>Construction</h1>
+        {<h1>{profileDetail[0].JobCategories}</h1>}
+
+        {/* <h1>Construction</h1> */}
       </div>
       <div className="m-4 p-4 bg-slate-50 flex justify-between">
         <h1 className="">Preferred Industries</h1>
         <span>:</span>
-        <h1>Software Companies</h1>
+        {/* {<h1>{profileData.PreferredIndustries}</h1>} */}
       </div>
       <div className="m-4 p-4 bg-slate-200 flex justify-between">
         <h1 className="">Preferred Job Title</h1>

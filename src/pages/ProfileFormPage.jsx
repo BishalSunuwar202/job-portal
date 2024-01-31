@@ -3,11 +3,11 @@ import ProfileForm from "../components/profile/ProfileForm";
 import { json, useLoaderData } from "react-router-dom";
 
 const ProfileFormPage = () => {
-  const profileDetails = useLoaderData();
+  const profileData = useLoaderData();
+
   return (
     <>
-      <h1>dsdds</h1>
-      <ProfileForm />;
+      <ProfileForm profileData={profileData} />;
     </>
   );
 };
@@ -17,14 +17,15 @@ export default ProfileFormPage;
 export async function loader({ request, params }) {
   try {
     const response = await fetch(
-      "https://mero-job-bcb98-default-rtdb.firebaseio.com/ProfileData.json"
+      "https://mero-job-bcb98-default-rtdb.firebaseio.com/Profile/ProfileData.json"
     );
-    console.log(response)
     if (!response.ok) {
       throw json({ message: "Could not fetch data", status: 500 });
     } else {
       const resData = await response.json();
-      return resData.ProfileData;
+      console.log(resData)
+      return resData;
+      // return (response.json());
     }
   } catch (error) {
     console.error("There was an error", error);
@@ -50,7 +51,7 @@ export async function action({ request, params }) {
 
   try {
     const response = await fetch(
-      "https://mero-job-bcb98-default-rtdb.firebaseio.com/ProfileData.json",
+      "https://mero-job-bcb98-default-rtdb.firebaseio.com/Profile/ProfileData.json",
       {
         method: "POST",
         headers: {
@@ -59,7 +60,6 @@ export async function action({ request, params }) {
         body: JSON.stringify(profileData),
       }
     );
-    console.log(response);
 
     if (!response.ok) {
       throw json({ message: "could not save profile" }, { status: 500 });

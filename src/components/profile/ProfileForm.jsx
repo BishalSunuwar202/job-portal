@@ -3,7 +3,7 @@ import { MdEditDocument } from "react-icons/md";
 import ProfileFormCase from "./ProfileFormCase";
 import ProfileFormDetail from "./ProfileFormDetail";
 
-const ProfileForm = () => {
+const ProfileForm = ({profileData}) => {
   const [open, setOpen] = useState(false);
 
   const handleOpenChange = (value) => {
@@ -43,7 +43,7 @@ const ProfileForm = () => {
           <ProfileFormCase />
         ) : (
           <ProfileFormDetail
-            setOpen={handleOpenChange}
+            setOpen={handleOpenChange} profileData={profileData}
           />
         )}
       </div>
