@@ -13,7 +13,7 @@ const MainNavigation = () => {
             />
           </Link>
         </div>
-        <ul className="m-4 flex space-x-4">
+        <ul className="m-4 md:flex hidden space-x-4">
           <li>Browse Jobs</li>
           <li>Blog</li>
           <li> FAQs</li>

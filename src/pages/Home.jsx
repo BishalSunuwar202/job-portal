@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Jobs from "../components/Jobs/Jobs";
 import { FaSearch } from "react-icons/fa";
+import { Link, useSearchParams } from "react-router-dom";
 
 const Dummy_Jobs = [
   {
@@ -55,16 +56,14 @@ const Dummy_Jobs = [
 ];
 
 const HomePage = () => {
-  const [jobsQuery, setJobsQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
 
-  const handleChange = (e) => setJobsQuery(e.target.value);
-  console.log(typeof jobsQuery);
-
-  const filteredJobs = Dummy_Jobs.filter(
-    (jobs) =>
-      jobs.JobPositon.toLowerCase().indexOf(jobsQuery.toLowerCase()) !== -1
+  const filteredJobPosition = Dummy_Jobs.filter(
+    (jobs) => jobs.JobPositon.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
-  console.log(filteredJobs);
 
   return (
     <Fragment>
@@ -78,49 +77,51 @@ const HomePage = () => {
 
           {/* <div className="relative m-6"> */}
           <div
-            className="bg-slate-600 lg:w-5/12
+            className="bg-slate-600 md:w-4/6 lg:w-5/12 w-80
            mx-40"
           >
-            <div className=" flex">
+            <div className="flex ">
               <input
                 type="search"
                 id="default-search"
-                className="w-8/12 p-4 px-10 m-2 ml-3 mr-0 text-sm font-semibold text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                className="md:w-8/12 w-32 p-4 px-10 m-2 ml-3 mr-0 text-sm font-semibold text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Search by Job Title, Skill or Organization"
                 onChange={handleChange}
               />
 
-              {/* <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-              >
-              <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg> */}
               <div className="relative">
-                <button
-                  type="submit"
-                  // className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  className="text-white bg-emerald-500 font-medium mt-2 w-44 h-[77%]"
-                >
-                  SEARCH JOBS
-                </button>
+                <Link to={"search"}>
+                  <button
+                    type="submit"
+                    // className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-white bg-emerald-500 font-medium mt-2 w-44 h-[77%]"
+                  >
+                    SEARCH JOBS
+                  </button>
+                </Link>
                 <div className="absolute inset-y-0 start-2 pointer-events-none flex items-center scale-100">
                   <FaSearch />
                 </div>
               </div>
             </div>
+            <div className=" bg-slate-50">
+              {query ? (
+                <div>
+                  {filteredJobPosition.map((jobPos) => (
+                    <ul key={jobPos.id}>
+                      <Link >
+                        <li className="p-1 border bg-sky-200 hover:bg-sky-600 ">
+                          {jobPos.JobPositon}
+                        </li>
+                      </Link>
+                    </ul>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
-        <Jobs filteredJobs={filteredJobs}/>
+        <Jobs />
       </div>
     </Fragment>
   );

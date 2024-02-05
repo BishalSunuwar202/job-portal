@@ -13,6 +13,7 @@ import ProfileFormPage, {
   action as newProfileAction,
   loader as profileDetailLoader,
 } from "./pages/ProfileFormPage";
+import SearchPage from "./pages/Search";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
         path: "employer/:id/favourite",
         element: <SavedJobsPage />,
       },
+      { path: "search", element: <SearchPage /> },
       {
         path: "profile",
         element: <ProfileRootLayout />,
