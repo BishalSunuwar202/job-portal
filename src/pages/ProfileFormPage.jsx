@@ -22,10 +22,10 @@ export async function loader({ request, params }) {
     if (!response.ok) {
       throw json({ message: "Could not fetch data", status: 500 });
     } else {
-      const resData = await response.json();
-      console.log(resData)
-      return resData;
-      // return (response.json());
+      // const resData = await response.json();
+      // console.log(resData)
+      // return resData;
+      return response.json();
     }
   } catch (error) {
     console.error("There was an error", error);
