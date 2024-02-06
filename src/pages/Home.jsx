@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Jobs from "../components/Jobs/Jobs";
 import { FaSearch } from "react-icons/fa";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Dummy_Jobs = [
   {

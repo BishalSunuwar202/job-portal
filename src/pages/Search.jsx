@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-//import { useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link, useSearchParams } from "react-router-dom";
-import Jobs from "../components/Jobs/Jobs";
+import { useLocation, useNavigate } from "react-router-dom";
+import JobsItem from "../components/Jobs/JobsItem";
 const Dummy_Jobs = [
   {
     id: 1,
@@ -56,69 +55,85 @@ const Dummy_Jobs = [
 ];
 
 const SearchPage = () => {
-  const [searchParams] = useSearchParams();
-  const [jobsQuery, setJobsQuery] = useState("");
-  const searchTermFromUrl = searchParams.get("q") === `${jobsQuery}`;
-  console.log(searchTermFromUrl);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [jobsData, setJobsData] = useState({
+    searchTerm: "",
+  });
 
-  const handleChange = (e) => setJobsQuery(e.target.value);
+  const [listing, setListing] = useState([]);
+  console.log(listing);
+  // const [loading, setLoading] = useState(false);
 
-    var filteredJobs = Dummy_Jobs.filter(
-      (jobs) =>
-        jobs.JobPositon.toLowerCase().indexOf(jobsQuery.toLowerCase()) !== -1
-    );
-  
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+
+    const searchTermFromUrl = urlParams.get("searchTerm");
+    if (searchTermFromUrl) {
+      setJobsData({ searchTerm: searchTermFromUrl || "" });
+      const filteredJobs = Dummy_Jobs.filter(
+        (jobs) =>
+          jobs.JobPositon.toLowerCase() === searchTermFromUrl.toLowerCase()
+      );
+      setListing(filteredJobs);
+    } else {
+      setListing(Dummy_Jobs);
+    }
+  }, [location.search]);
+
+  const handleChange = (e) => {
+    if (e.target.id === "searchTerm") {
+      setJobsData({ ...jobsData, searchTerm: e.target.value });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams();
+    urlParams.set("searchTerm", jobsData.searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
+
+  // const filteredJobs = Dummy_Jobs.filter(
+  //   (jobs) =>
+  //     jobs.JobPositon.toLowerCase().indexOf(jobsQuery.toLowerCase()) !== -1
+  // );
 
   return (
     <div className="bg-slate-400 h-screen  ">
       <div className=" border h-56">
-        <div
-          className="bg-slate-600 md:w-fit w-52
+        <form action="" onSubmit={handleSubmit}>
+          <div
+            className="bg-slate-600 md:w-fit w-52
         h-16 flex items-center m-auto mt-20"
-        >
-          <div className="flex">
-            <input
-              type="search"
-              id="default-search"
-              className="md:w-80 w-48 p-2 px-10 m-2 text-sm font-semibold text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 md:mr-0"
-              placeholder="Search by Job Title, Skill or Organization"
-              onChange={handleChange}
-            />
+          >
+            <div className="flex">
+              <input
+                type="text"
+                id="searchTerm"
+                className="md:w-80 w-48 p-2 px-10 m-2 text-sm font-semibold text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 md:mr-0"
+                placeholder="Search by Job Title, Skill or Organization"
+                value={jobsData.searchTerm}
+                onChange={handleChange}
+              />
 
-            <div className="relative">
-              <Link to={`?q=${jobsQuery}`}>
+              <div className="relative">
                 <button
                   type="submit"
                   className="text-white bg-emerald-500 font-medium mt-2 md:w-36 w:24 h-[70%] hidden md:block pl-6 mr-2"
                 >
                   SEARCH JOBS
+                  <div className="absolute md:inset-y-0 md:start-2  pointer-events-none flex items-center scale-150 md:scale-100 inset-y-0 -start-7 text-cyan-300 md:text-slate-50">
+                    <FaSearch />
+                  </div>
                 </button>
-                <div className="absolute md:inset-y-0 md:start-2  pointer-events-none flex items-center scale-150 md:scale-100 inset-y-0 -start-7 text-cyan-300 md:text-slate-50">
-                  <FaSearch />
-                </div>
-              </Link>
+              </div>
             </div>
           </div>
-        </div>
-        <div className=" bg-slate-50 w-1/3 m-auto">
-          {jobsQuery ? (
-            <div>
-              {filteredJobs.map((jobPos) => (
-                <ul key={jobPos.id}>
-                  <Link>
-                    <li className="p-1 border bg-sky-200 hover:bg-sky-600 ">
-                      {jobPos.JobPositon}
-                    </li>
-                  </Link>
-                </ul>
-              ))}
-            </div>
-          ) : null}
-        </div>
+        </form>
       </div>
-
-      {/* <Jobs filteredJobs={filteredJobs} /> */}
-      <Jobs />
+      {listing && listing.map((list) => <JobsItem key={list.id} list={list} />)}
     </div>
   );
 };
