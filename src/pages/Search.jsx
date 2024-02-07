@@ -62,7 +62,6 @@ const SearchPage = () => {
   });
 
   const [listing, setListing] = useState([]);
-  console.log(listing);
   // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
