@@ -10,6 +10,6 @@ const connectDb = async () => {
     process.exit(1);
   }
 };
-export default connectDb
+export default connectDb;
 
 //Exit code 1 is used when unhandled fatal exceptions occur that were not handled whereas Exit code 0 is used to terminate when no more async operations are happening.
