@@ -16,6 +16,8 @@ app.use(
 );
 //app.use(express.json({limit:"16kb"}))
 app.use(express.json());
+app.use(express.static('public'))
+
 //with this i do not need to use body-parse
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 
@@ -37,5 +39,5 @@ app.use((err, req, res, next) => {
     message,
   });
 });
-
+ 
 export { app };

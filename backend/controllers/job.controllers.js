@@ -3,8 +3,9 @@ import { errorHandler } from "../utils/error.js";
 
 export const createJob = async (req, res, next) => {
   try {
-    // console.log("hh", req.file);
-    const jobs = await Job.create({ ...req.body, companyImage: req.file.path });
+    //console.log("hh", req.file);
+    let companyImage = "temp/" + req.file.filename;
+    const jobs = await Job.create({ ...req.body, companyImage });
     return res.status(201).json(jobs);
   } catch (err) {
     console.error(err);
@@ -35,25 +36,28 @@ export const getJobs = async (req, res, next) => {
   }
 };
 
-export const updateJobs = async (req, res, next) => {
+export const updateJob = async (req, res, next) => {
+  let companyImage = "temp/" + req.file.filename;
   const job = await Job.findById(req.params.id);
   if (!job) {
     return next(errorHandler(404, "job not found sorry"));
   }
   try {
-    const updatedJobs = await Job.findByIdAndUpdate(req.params.id, req.body, {
+    console.log(req.body);
+    const updatedJobs = await Job.findByIdAndUpdate(req.params.id, {...req.body, companyImage}, {
       new: true,
     });
+
     return res.status(200).json(updatedJobs);
   } catch (err) {
     next(err);
   }
 };
-export const deleteListing = async (req, res, next) => {
-  const job = await Job.findById(req.params.id);
+export const deleteJob = async (req, res, next) => {
+  const job = await Job.findByIdAndDelete(req.params.id);
 
   if (!job) {
-    return next(errorHandler(404, 'job not found!'));
+    return next(errorHandler(404, "job not found!"));
   }
 
   // if (req.user.id !== listing.userRef) {
@@ -62,9 +66,8 @@ export const deleteListing = async (req, res, next) => {
 
   try {
     await Job.findByIdAndDelete(req.params.id);
-    return res.status(200).json('job has been deleted!');
+    return res.status(200).json("job has been deleted!");
   } catch (error) {
     next(error);
   }
 };
-
