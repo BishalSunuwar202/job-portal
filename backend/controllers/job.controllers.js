@@ -1,5 +1,6 @@
 import { Job } from "../models/jobs.model.js";
 import { errorHandler } from "../utils/error.js";
+import fs from "fs/promises";
 
 export const createJob = async (req, res, next) => {
   try {
@@ -37,16 +38,26 @@ export const getJobs = async (req, res, next) => {
 };
 
 export const updateJob = async (req, res, next) => {
-  let companyImage = "temp/" + req.file.filename;
-  const job = await Job.findById(req.params.id);
-  if (!job) {
-    return next(errorHandler(404, "job not found sorry"));
-  }
   try {
-    console.log(req.body);
-    const updatedJobs = await Job.findByIdAndUpdate(req.params.id, {...req.body, companyImage}, {
-      new: true,
-    });
+    let companyImage = "temp/" + req.file.filename;
+
+    let job = await Job.findById(req.params.id);
+    if (!job) {
+      return next(errorHandler(404, "job not found sorry"));
+    }
+    let old_companyImages = job.companyImage;
+    if (old_companyImages) {
+      const [, filename] = old_companyImages.split("/");
+      await fs.unlink(`public/temp/${filename}`);
+    }
+    const updatedJobs = await Job.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, companyImage },
+      {
+        new: true,
+        //runValidators:true
+      }
+    );
 
     return res.status(200).json(updatedJobs);
   } catch (err) {
