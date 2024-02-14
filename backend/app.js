@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import jobsRouter from "./routes/jobs.route.js";
+import usersRouter from "./routes/users.route.js"
 
 dotenv.config();
 
@@ -26,9 +27,11 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 //app.use(express.urlencoded())
 //app.use(express.static("public"))
 app.use(cookieParser());
+
 //this is used to control browser secure cookie from server
 
 app.use("/api/jobs", jobsRouter);
+app.use("/api/users", usersRouter)
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
